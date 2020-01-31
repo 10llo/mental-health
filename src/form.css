@@ -1,0 +1,9 @@
+.chat {
+    display: flex;
+    align-self: flex-end;
+
+    height: 400px !important;
+    width: 300px !important;
+    background: #eee;
+    bottom: 0;
+}
