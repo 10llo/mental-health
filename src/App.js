@@ -5,41 +5,24 @@ import MyForm from './Form';
 import './style.css';
 
 function App() {
+    const NoMatch = () => {
+        return (
+            <h3>404 - Not found</h3>
+        );
+    };
     return (
         <div>
             <nav className="navbar">
-    <span className="navbar-toggle" id="js-navbar-toggle">
-            <i className="fas fa-bars"></i>
-        </span>
-                <a href="#" className="logo">logo</a>
-                <ul className="main-nav" id="js-menu">
-                    <li>
-                            <span><Link to={'/form'}> form </Link></span>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-links">Products</a>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-links">About Us</a>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-links">Contact Us</a>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-links">Blog</a>
-                    </li>
-                </ul>
+                <Link to={'/'}> home </Link>
+                <Link to={'/form'}> form </Link>
+                <Link to={'/info'}> info </Link>
             </nav>
-
-            <div>
+            <div className="content">
                 <Switch>
-                    <Route exact path="/form">
-                        <MyForm/>
-                    </Route>
-                    <Route exact path="/info">
-                        <Info/>
-                    </Route>
-                    <Route render={() => <div>Home</div>}/>
+                    <Route exact path="/"/>
+                    <Route exact path="/form" component={MyForm}/>
+                    <Route exact path="/info" component={Info}/>
+                    <Route exact component={NoMatch}/>
                 </Switch>
             </div>
 

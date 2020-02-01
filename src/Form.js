@@ -1,5 +1,5 @@
 import React from 'react';
-import './form.css';
+import './myForm.scss';
 import { ConversationalForm } from 'conversational-form';
 import { withRouter } from "react-router-dom";
 
@@ -12,13 +12,13 @@ class MyForm extends React.Component {
             {
                 'tag': 'input',
                 'type': 'text',
-                'name': 'firstname',
+                'name': 'nombre',
                 'cf-questions': 'What is your firstname?'
             },
             {
                 'tag': 'input',
                 'type': 'text',
-                'name': 'lastname',
+                'name': 'apellido',
                 'cf-questions': 'What is your lastname?'
             }
         ];
@@ -30,8 +30,8 @@ class MyForm extends React.Component {
         this.cf = ConversationalForm.startTheConversation({
             options: {
                 submitCallback: this.submitCallback,
+                loadExternalStyleSheet: false,
                 preventAutoFocus: true,
-                // loadExternalStyleSheet: false
             },
             tags: this.formFields
         });
@@ -40,8 +40,8 @@ class MyForm extends React.Component {
 
     submitCallback() {
         var Data = this.cf.getFormData(true);
-        console.log("Data, obj:", Data);
-        this.cf.addRobotChatResponse(`Redireccion en 3 segundos ${Data.toString()}`);
+        console.log(Data);
+        this.cf.addRobotChatResponse(`Redireccion en 3 segundos ${Data.nombre}`);
         window.setTimeout(() => {
             this.props.history.push("/");
         }, 3000)
